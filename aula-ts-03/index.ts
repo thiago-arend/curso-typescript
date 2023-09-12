@@ -3,7 +3,7 @@ function multiply(num1: number, num2: number): number {
 }
 
 function sum(num1: number, num2: number): number {
-    return num1 * num2;
+    return num1 + num2;
 }
 
 function isEven(num: number): boolean {
@@ -14,6 +14,6 @@ function showResult(result: number): void {
     if(isEven(result)) {
         console.log(`The result is ${result} and it's even!`);
     } else {
-        console.log(`The result is ${result} and it's even!`);
+        console.log(`The result is ${result} and it's not even!`);
     }
 }
