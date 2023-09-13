@@ -4,7 +4,7 @@
     "esModuleInterop": true,
     "moduleResolution": "Node",
     "baseUrl": "src",
-    "module": "es6"
+    "module": "CommonJS"
   },
   "ts-node": {
     "esm": true
