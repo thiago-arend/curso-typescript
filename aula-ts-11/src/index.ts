@@ -6,19 +6,17 @@ import httpStatus from "http-status";
 import dotenv from "dotenv";
 import validateSchema from "./middlewares/validateSchema";
 import { gameSchema } from "./schemas/game.schemas";
-import errorHandler from "./middlewares/errorHandler";
 
 dotenv.config();
 const app = express();
 app.use(json());
-app.use(errorHandler);
 
-app.post("/games", validateSchema(gameSchema), (req: Request, res: Response) => {
+app.post("/games", validateSchema(gameSchema), async (req: Request, res: Response) => {
   const body = req.body as CreateGame;
 
   try {
 
-    gamesService.createGame(body);
+    await gamesService.createGame(body);
     res.sendStatus(httpStatus.CREATED);
 
   } catch (error) {
@@ -28,8 +26,10 @@ app.post("/games", validateSchema(gameSchema), (req: Request, res: Response) => 
   }
 });
 
-app.get("/games", (req: Request, res: Response) => {
-  const games = gamesService.getGames();
+app.get("/games", async (req: Request, res: Response) => {
+  const games = await gamesService.getGames();
+  console.log(games);
+  
   res.send(games);
 });
 

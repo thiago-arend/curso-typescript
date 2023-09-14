@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import { Schema } from "joi";
+import { ObjectSchema } from "joi";
 
-export default function validateSchema(schema: Schema) {
+export default function validateSchema(schema: ObjectSchema) {
     return (req: Request, res: Response, next: NextFunction) => {
 
         const validation = schema.validate(req.body, { abortEarly: false, convert: false });
